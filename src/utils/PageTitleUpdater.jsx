@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const routeTitleMap = {
-  "/": "Art E-Commerce",
+  "/": "HiArt24",
   "/signup": "Sign Up",
   "/signin": "Sign In",
   "/wishlist": "Wishlist",
@@ -24,7 +24,7 @@ const PageTitleUpdater = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const defaultTitle = "Art E-Commerce";
+    const defaultTitle = "HiArt24";
     const path = location.pathname;
 
     let title = routeTitleMap[path];
@@ -38,7 +38,7 @@ const PageTitleUpdater = () => {
     document.title = title || defaultTitle;
   }, [location]);
 
-  return null; // No UI component
+  return null;
 };
 
 export default PageTitleUpdater;

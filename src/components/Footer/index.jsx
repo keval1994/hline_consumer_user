@@ -52,7 +52,7 @@ const Footer = () => {
     {
       title: "Reach Us",
       links: [
-        { name: "Support@blista.in", path: "mailto:support@blista.in" },
+        { name: "Support@@hiart24.in", path: "mailto:support@hiart24.in" },
         { name: "+91 2655235621", path: "tel:+912655235621" },
         { name: "Our Address", path: "/contact" },
         { name: "Working Hours 10AM - 7 PM", path: "#" },
@@ -158,7 +158,7 @@ const Footer = () => {
         </div>
         <div className="pt-6 border-t border-[#1F2937] flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-[#A0AEC0] font-medium gap-4">
           <span className="text-center sm:text-left tracking-widest">
-            © {new Date().getFullYear()} Blissta. All Rights Reserved.
+            © {new Date().getFullYear()} @hiart24. All Rights Reserved.
           </span>
           <div className="flex justify-center sm:justify-end gap-5 text-xl text-[#E4E7EC]">
             <a
