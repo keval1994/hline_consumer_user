@@ -2,6 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { wishListAPI } from "../../utils/apiService";
 import { useEffect, useState } from "react";
+import { notify } from "../../common/Toast";
 
 const WishlistIcon = ({ item }) => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const WishlistIcon = ({ item }) => {
 
   const handleClick = async () => {
     if (!customerId) {
-      return navigate("/signup", {
+      return navigate("/signin", {
         state: {
           from: location.pathname,
           intendedAction: {
@@ -48,6 +49,7 @@ const WishlistIcon = ({ item }) => {
           setWishlistId(null);
           const updated = wishlist.filter((w) => w.itemId !== item.item_Id);
           sessionStorage.setItem("wishlist", JSON.stringify(updated));
+          notify("Removed from wishlist", "error");
         } else {
           console.warn("Missing wishlistId, cannot remove item:", item.item_Id);
         }
@@ -63,6 +65,7 @@ const WishlistIcon = ({ item }) => {
         setWishlistId(newWishlistId);
         wishlist.push({ itemId: item.item_Id, wishlistId: newWishlistId });
         sessionStorage.setItem("wishlist", JSON.stringify(wishlist));
+        notify("Added to wishlist", "success");
       }
     } catch (err) {
       console.error("Wishlist toggle failed:", err);

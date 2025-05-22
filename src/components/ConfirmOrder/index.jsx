@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { cartAPI } from "../../utils/apiService";
 import { useState } from "react";
 import ArtBlobLoader from "../../common/Loader/ArtBlobLoader ";
+import { notify } from "../../common/Toast";
 
 const ConfirmOrder = () => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const ConfirmOrder = () => {
       setIsLoading(true);
       const cartId = summary?.cart_Id || cartItems[0]?.cart_Id;
       const finalOrder = await cartAPI.finalOrderByCartId(cartId);
-      alert("Order placed successfully!");
+      notify("Order placed successfully!", "success");
       navigate("/orderSuccess", { state: { finalOrder } });
     } catch (err) {
       console.error("Final order error:", err);

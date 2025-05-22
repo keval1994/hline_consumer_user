@@ -3,8 +3,7 @@ import axios from "axios";
 
 // axiosInstance.js
 const axiosInstance = axios.create({
-  baseURL:
-    process.env.REACT_APP_API_BASE_URL || "https://ecom.hlinecrm.in/api/",
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 // Example: intercept requests to attach tokens or handle errors globally

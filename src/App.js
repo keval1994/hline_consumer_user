@@ -13,7 +13,7 @@ function App() {
       <Toast />
       <PageTitleUpdater />
       <MainLayout>
-        {/* <AnimatedCursor
+        <AnimatedCursor
           innerSize={8}
           outerSize={35}
           color="8, 31, 98"
@@ -22,7 +22,7 @@ function App() {
           outerScale={2}
           clickables={["a", "button", ".link", "[data-custom-cursor]"]}
           showSystemCursor={false}
-        /> */}
+        />
         <AppRoutes />
       </MainLayout>
     </Router>

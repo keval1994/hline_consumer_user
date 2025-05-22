@@ -6,6 +6,7 @@ import { GiShoppingCart } from "react-icons/gi";
 import { TfiClose } from "react-icons/tfi";
 import Breadcrumb from "../../common/Breadcrumb";
 import { MdDeleteForever } from "react-icons/md";
+import { notify } from "../../common/Toast";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -117,6 +118,7 @@ const Cart = () => {
         discount_Amount: totalDiscount,
         subTotal: originalTotal - totalDiscount,
       });
+      notify("Cart updated", "success");
     } catch (error) {
       console.error("Failed to update quantity", error);
     }
@@ -129,6 +131,7 @@ const Cart = () => {
       setCartItems(updated);
       const newSubtotal = updated.reduce((sum, i) => sum + i.total_Amount, 0);
       setSummary((prev) => ({ ...prev, subTotal: newSubtotal }));
+      notify("Item removed from cart", "error");
     } catch (err) {
       console.error("Failed to remove item", err);
     }

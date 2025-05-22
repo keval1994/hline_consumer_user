@@ -39,7 +39,7 @@ const Home = () => {
     try {
       const [reviews, explore] = await Promise.all([
         reviewAPI.getReviews(),
-        exploreArtAPI.getAllExploreArtData(customerId),
+        exploreArtAPI.getAllExploreArtData(customerId || 0),
       ]);
       setReviewsItems(reviews);
       setExploreItems(explore.slice(0, 6));

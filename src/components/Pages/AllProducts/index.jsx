@@ -20,7 +20,7 @@ const AllProducts = () => {
           filterType: "All",
           pageNumber: currentPage,
           pageSize: 9,
-          customer_Id: customerId,
+          customer_Id: customerId || 0,
         });
 
         if (data?.data) {

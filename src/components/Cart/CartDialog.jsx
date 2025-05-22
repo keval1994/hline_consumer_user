@@ -7,6 +7,7 @@ import ArtBlobLoader from "../../common/Loader/ArtBlobLoader ";
 import { GiShoppingBag } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { MdDeleteForever } from "react-icons/md";
+import { notify } from "../../common/Toast";
 
 const CartDialog = ({ isOpen, onClose }) => {
   const ref = useRef();
@@ -77,35 +78,12 @@ const CartDialog = ({ isOpen, onClose }) => {
       await cartAPI.removeCartByUser(cartId);
       const updated = cartItems.filter((item) => item.cart_Id !== cartId);
       setCartItems(updated);
+      notify("Item removed from cart", "error");
     } catch (err) {
       console.error("Remove failed", err);
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const updateQuantity = (cartId, newQty) => {
-    if (newQty < 1) return;
-    const updatedItems = cartItems.map((i) =>
-      i.cart_Id === cartId
-        ? { ...i, qty: newQty, total_Amount: i.price * newQty }
-        : i
-    );
-
-    setCartItems(updatedItems);
-    // const newSubtotal = updatedItems.reduce(
-    //   (sum, i) => sum + i.total_Amount,
-    //   0
-    // );
-    // setSummary((prev) => ({
-    //   ...prev,
-    //   subTotal: newSubtotal,
-    //   original_Price: updatedItems.reduce((sum, i) => sum + i.price * i.qty, 0),
-    //   total_Discount_Amount: updatedItems.reduce(
-    //     (sum, i) => sum + (i.price * i.qty - i.total_Amount),
-    //     0
-    //   ),
-    // }));
   };
 
   if (!isOpen || cartItems.length === 0) return null;
@@ -212,7 +190,6 @@ const CartDialog = ({ isOpen, onClose }) => {
               <div className="flex flex-col items-end justify-between gap-2">
                 <div className="flex items-center justify-between border rounded-lg overflow-hidden shadow-sm bg-white w-fit">
                   <button
-                    onClick={() => updateQuantity(item.cart_Id, item.qty - 1)}
                     className="w-9 h-9 flex items-center justify-center text-gray-700 hover:bg-gray-100 transition"
                     aria-label="Decrease quantity"
                     disabled
@@ -223,7 +200,6 @@ const CartDialog = ({ isOpen, onClose }) => {
                     {item.qty}
                   </span>
                   <button
-                    onClick={() => updateQuantity(item.cart_Id, item.qty + 1)}
                     className="w-9 h-9 flex items-center justify-center text-gray-700 hover:bg-gray-100 transition"
                     aria-label="Increase quantity"
                     disabled

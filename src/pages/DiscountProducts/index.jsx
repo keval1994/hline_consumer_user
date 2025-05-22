@@ -58,7 +58,7 @@ const DiscountProducts = () => {
   useEffect(() => {
     const fetchDiscountProducts = async () => {
       try {
-        const data = await allItemsAPI.getDiscountItems(customerId);
+        const data = await allItemsAPI.getDiscountItems(customerId || 0);
         if (data && data.data) {
           setIsDiscountProducts(data.data);
         } else {

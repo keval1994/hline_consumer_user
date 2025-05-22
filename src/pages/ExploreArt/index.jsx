@@ -53,7 +53,7 @@ const ExploreArt = () => {
   useEffect(() => {
     const fetchExploreData = async () => {
       try {
-        const data = await exploreArtAPI.getAllExploreArtData(customerId);
+        const data = await exploreArtAPI.getAllExploreArtData(customerId || 0);
         setISExploreData(data);
       } catch (error) {
         console.error("Failed to fetch Explore Art Data:", error);

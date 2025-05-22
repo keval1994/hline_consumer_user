@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cartAPI, countryAPI, stateAPI } from "../../utils/apiService";
 import ArtBlobLoader from "../../common/Loader/ArtBlobLoader ";
+import { notify } from "../../common/Toast";
 
 const InputField = ({
   label,
@@ -202,6 +203,7 @@ const CheckOut = () => {
           summary,
         },
       });
+      notify("Your Order is Confrimed", "error");
     } catch (error) {
       console.error("Order confirmation failed:", error);
       alert("Failed to confirm order. Please try again.");
