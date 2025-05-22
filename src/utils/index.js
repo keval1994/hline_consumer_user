@@ -1,0 +1,23 @@
+import logo from "../assets/images/logo.png";
+import banner01 from "../assets/images/banner01.jpg";
+import banner02 from "../assets/images/banner02.jpg";
+import banner03 from "../assets/images/banner03.jpg";
+import product01 from "../assets/images/product01.jpg";
+import product02 from "../assets/images/product02.jpg";
+import product03 from "../assets/images/product03.jpg";
+import product04 from "../assets/images/product04.jpg";
+import product05 from "../assets/images/product05.jpeg";
+import userImage from "../assets/images/userImage.jpg";
+import illustration from "../assets/images/Illustration.png";
+
+export const Logo = logo;
+export const Banner01 = banner01;
+export const Banner02 = banner02;
+export const Banner03 = banner03;
+export const Product01 = product01;
+export const Product02 = product02;
+export const Product03 = product03;
+export const Product04 = product04;
+export const Product05 = product05;
+export const UserImage = userImage;
+export const Illustration = illustration;
